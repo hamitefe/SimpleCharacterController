@@ -4,7 +4,7 @@ using UnityEngine.Serialization;
 
 namespace HamitEfe.SCC
 {
-    public class CharacterMovement : MonoBehaviour
+    public class CharacterMovement : CharacterComponent
     {
         /// <summary>
         /// The desired speed of the character

@@ -3,7 +3,7 @@ using UnityEngine;
 
 namespace HamitEfe.SCC
 {
-    public class FloatingCharacter : MonoBehaviour
+    public class FloatingCharacter : CharacterComponent
     {
         /// <summary>
         /// the desired distance between the ground and character
@@ -35,6 +35,8 @@ namespace HamitEfe.SCC
 
         private void Awake()
         {
+            base.Awake();
+            Debug.Log(Character);
             rb = GetComponent<Rigidbody>();
             capsule = GetComponentInChildren<CapsuleCollider>();
         }
@@ -50,17 +52,35 @@ namespace HamitEfe.SCC
             {
                 
                 rb.linearVelocity += Physics.gravity * Time.deltaTime;
+                if (ground) GroundExitCallbacks(ground);
                 ground = null;
                 stopSnap = null;
                 return;
             }
-            
+
+            if (ground != hit.collider.gameObject)
+            {
+                if (ground) GroundExitCallbacks(ground);
+                GroundEnterCallbacks(hit.collider.gameObject);
+            }
             ground = hit.collider.gameObject;
             if (ground == stopSnap)
                 return;
             SnapToGround(hit.distance);
 
             GroundReaction(hit.collider, hit.point);
+        }
+
+        private void GroundEnterCallbacks(GameObject gobject)
+        {
+            if (!gobject.TryGetComponent(out ICharacterGroundCallbacks callbacks)) return;
+            callbacks.CharacterEnter(Character);
+        }
+
+        private void GroundExitCallbacks(GameObject gobject)
+        {
+            if (!gobject.TryGetComponent(out ICharacterGroundCallbacks callbacks)) return;
+            callbacks.CharacterExit(Character);
         }
 
         private void GroundReaction(Collider ground, Vector3 hitPoint)

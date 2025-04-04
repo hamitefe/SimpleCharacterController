@@ -3,7 +3,7 @@ using UnityEngine;
 
 namespace HamitEfe.SCC
 {
-    public class CharacterJump : MonoBehaviour
+    public class CharacterJump : CharacterComponent
     {
         private FloatingCharacter character;
         private ICharacterInputProvider inputProvider;

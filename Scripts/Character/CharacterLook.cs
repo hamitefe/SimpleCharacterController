@@ -4,7 +4,7 @@ using UnityEngine;
 
 namespace HamitEfe.SCC
 {
-    public class CharacterLook : MonoBehaviour
+    public class CharacterLook : CharacterComponent
     {
         private ICharacterInputProvider inputProvider;
 
