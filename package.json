@@ -1,4 +1,5 @@
 {
     "name":"me.hamitefe.scc",
-    "version":"1.0.0"
+    "version":"1.0.0",
+    "displayName":"Simple Character Controller"
 }
