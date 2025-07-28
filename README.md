@@ -184,6 +184,10 @@ CharacterComponent (Abstract Base)
 - Unity Input System package (for SimpleInputProvider)
 - Physics-based character setup with Rigidbody and Collider
 
+## Author
+
+**HamitEfe** - Check out my other Unity projects and tools on [GitHub](https://github.com/hamitefe)
+
 ## License
 
-This project is provided as-is for educational and development purposes.
+This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
